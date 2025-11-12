@@ -1,5 +1,5 @@
 // Service Worker for elishoes PWA
-const CACHE_NAME = 'aa-v1.0.2';
+const CACHE_NAME = 'elishoes-v1.0.2';
 const urlsToCache = [
   '/aa/',
   '/aa/index.html',
@@ -130,7 +130,7 @@ self.addEventListener('notificationclick', (event) => {
   event.notification.close();
   
   event.waitUntil(
-    self.clients.openWindow('/elishoes/')
+    self.clients.openWindow('/aa/')
   );
 });
 
