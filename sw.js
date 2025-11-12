@@ -1,5 +1,5 @@
 // Service Worker for elishoes PWA
-const CACHE_NAME = 'elishoes-v1.0.1';
+const CACHE_NAME = 'elishoes-v1.0.2';
 const urlsToCache = [
   '/elishoes/',
   '/elishoes/index.html',

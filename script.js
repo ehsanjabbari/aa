@@ -1395,6 +1395,28 @@ function initializeButtonHandlers() {
     });
 }
 
+// Force Update Service Worker
+function forceUpdateServiceWorker() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            registrations.forEach(function(registration) {
+                registration.update().then(() => {
+                    // Unregister the current service worker
+                    return registration.unregister();
+                }).then(() => {
+                    // Reload the page to load the new service worker
+                    window.location.reload();
+                }).catch((error) => {
+                    console.error('خطا در به‌روزرسانی Service Worker:', error);
+                    showNotification('خطا در به‌روزرسانی برنامه', 'error');
+                });
+            });
+        });
+    } else {
+        showNotification('Service Worker پشتیبانی نمی‌شود', 'error');
+    }
+}
+
 // Mobile Menu Management
 function initializeMobileMenu() {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
